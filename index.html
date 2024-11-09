@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Wedding Invitation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: linear-gradient(to bottom, #f3f3f3, #c0b283);
+            color: #333;
+            overflow-x: hidden;
+            position: relative;
+        }
+        .navbar {
+            background: rgba(240, 240, 240, 0.8);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            color: #b8a078;
+        }
+        .navbar-nav .nav-link {
+            font-weight: 600;
+            color: #555;
+        }
+        .header-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 4em;
+            color: #b8a078;
+            margin-top: 60px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        .rounded-section {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 50px;
+            margin: 30px;
+            border-radius: 25px;
+            box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15);
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .section-title {
+            font-size: 2.5em;
+            font-family: 'Playfair Display', serif;
+            color: #b8a078;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+        }
+        .countdown {
+            font-size: 1.5em;
+            color: #555;
+            margin: 30px 0;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+        }
+        .floating-hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .floating-heart {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: url('https://i.imgur.com/j1rE3z8.png') no-repeat center center;
+            background-size: contain;
+            animation: floatHeart 10s infinite ease-in-out;
+        }
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(0) translateX(0) scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-30vh) translateX(20vw) scale(1.5);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-60vh) translateX(-25vw) scale(1);
+                opacity: 0;
+            }
+        }
+        footer {
+            margin-top: 60px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-top: 1px solid #e3e3e3;
+            text-align: center;
+            border-radius: 25px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        }
+        .photo-item {
+            width: 100%;
+            animation: floatPhoto 5s infinite alternate ease-in-out, fadeInUp 2s ease-in-out;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .photo-item:hover {
+            transform: scale(1.1) rotate(3deg);
+            box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.25);
+        }
+        .photo-item-container {
+            padding: 20px;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.9);
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: rotateIn 3s ease-in-out;
+        }
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes rotateIn {
+            0% {
+                opacity: 0;
+                transform: rotate(-10deg) scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: rotate(0deg) scale(1);
+            }
+        }
+        @keyframes floatPhoto {
+            0% {
+                transform: translateY(0) scale(1);
+            }
+            100% {
+                transform: translateY(-15px) scale(1.05);
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Countdown Timer
+            function updateCountdown() {
+                const weddingDate = new Date('2024-12-29T00:00:00');
+                const now = new Date();
+                const timeDiff = weddingDate - now;
+                const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+                document.getElementById('countdown').textContent = `${days} Days ${hours} Hours ${minutes} Minutes ${seconds} Seconds`;
+            }
+            setInterval(updateCountdown, 1000);
+
+            // Hidden YouTube Music - Fix to ensure autoplay always works
+            var hiddenAudio = document.createElement('iframe');
+            hiddenAudio.src = 'https://www.youtube.com/embed/b_EF-fRnqWs?autoplay=1&loop=1&playlist=b_EF-fRnqWs&mute=0';
+            hiddenAudio.width = 1;
+            hiddenAudio.height = 1;
+            hiddenAudio.frameBorder = 0;
+            hiddenAudio.allow = 'autoplay; encrypted-media';
+            hiddenAudio.style.position = 'absolute';
+            hiddenAudio.style.left = '-9999px';
+            document.body.appendChild(hiddenAudio);
+
+            // Floating Hearts Animation
+            const floatingHeartsContainer = document.createElement('div');
+            floatingHeartsContainer.className = 'floating-hearts-container';
+            document.body.appendChild(floatingHeartsContainer);
+
+            for (let i = 0; i < 50; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.style.top = Math.random() * 100 + 'vh';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = 8 + Math.random() * 12 + 's';
+                floatingHeartsContainer.appendChild(heart);
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="floating-hearts-container"></div>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Kha & Van</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#details">Details</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#photos">Photos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#rsvp">RSVP</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container invitation-section text-center rounded-section mt-5">
+        <h1 class="header-text">You're Invited!</h1>
+        <p class="lead">Join us for the wedding of</p>
+        <h2>TRAN NGUYEN ANH KHA & DAO THI MONG VAN</h2>
+        <p class="lead">on <strong>29/12/2024</strong></p>
+        <div id="countdown" class="countdown"></div>
+    </div>
+
+    <section id="details" class="details-section text-center rounded-section">
+        <h2 class="section-title">Details</h2>
+        <p>The ceremony will take place at:</p>
+        <p><strong>The Adora Premium</strong><br>803 Đ. Nguyễn Văn Linh, Tân Phú, Quận 7, Hồ Chí Minh 72908</p>
+        <p>Reception follows immediately at the same location.</p>
+    </section>
+
+    <section id="photos" class="photos-section text-center rounded-section">
+        <h2 class="section-title">Our Photos</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="photo-item-container">
+                    <img src="assets/images/87A688FD-D61C-412A-8947-AB6C250375E0_1_105_c.jpeg" class="photo-item" alt="Photo 1">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="photo-item-container">
+                    <img src="assets/images/53BF2E04-F8EE-4967-A311-6D0BF9A7CFFE_1_105_c.jpeg" class="photo-item" alt="Photo 2">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="photo-item-container">
+                    <img src="assets/images/32F7D62E-1943-4CCC-9289-C2E4CC23F6BA_1_105_c.jpeg" class="photo-item" alt="Photo 3">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="photo-item-container">
+                    <img src="assets/images/5B6ADDB2-0C4F-4D03-B3F3-04E358B02CE7_1_105_c.jpeg" class="photo-item" alt="Photo 4">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="rsvp" class="rsvp-section text-center rounded-section">
+        <h2 class="section-title">RSVP</h2>
+        <p>Please let us know if you'll be attending!</p>
+        <form>
+            <div class="mb-3">
+                <label for="name" class="form-label">Your Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter your name">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" placeholder="name@example.com">
+            </div>
+            <button type="submit" class="btn btn-warning">RSVP</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>We can't wait to celebrate with you!</p>
+    </footer>
+</body>
+</html>
