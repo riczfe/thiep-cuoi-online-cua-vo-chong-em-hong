@@ -43,12 +43,14 @@
         .hero-text {
             font-family: 'Great Vibes', cursive;
             font-size: 4em;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
             margin-bottom: 0.5em;
+            color: #ffdddd;
         }
         .hero-subtext {
             font-size: 1.5em;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+            color: #ffdddd;
         }
         .rounded-section {
             background: rgba(255, 255, 255, 0.95);
@@ -88,9 +90,9 @@
             position: absolute;
             width: 40px;
             height: 40px;
-            background: url('https://i.imgur.com/j1rE3z8.png') no-repeat center center;
+            background: url('https://i.imgur.com/94PLFPw.png') no-repeat center center;
             background-size: contain;
-            animation: floatHeart 12s infinite ease-in-out;
+            animation: floatHeart 15s infinite ease-in-out;
         }
         @keyframes floatHeart {
             0% {
@@ -98,11 +100,11 @@
                 opacity: 1;
             }
             50% {
-                transform: translateY(-40vh) translateX(25vw) scale(1.5);
+                transform: translateY(-50vh) translateX(30vw) scale(1.5);
                 opacity: 0.8;
             }
             100% {
-                transform: translateY(-80vh) translateX(-25vw) scale(1);
+                transform: translateY(-100vh) translateX(-30vw) scale(1);
                 opacity: 0;
             }
         }
@@ -197,12 +199,12 @@
             floatingHeartsContainer.className = 'floating-hearts-container';
             document.body.appendChild(floatingHeartsContainer);
 
-            for (let i = 0; i < 100; i++) {
+            for (let i = 0; i < 200; i++) {
                 const heart = document.createElement('div');
                 heart.className = 'floating-heart';
                 heart.style.top = Math.random() * 100 + 'vh';
                 heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.animationDuration = 8 + Math.random() * 12 + 's';
+                heart.style.animationDuration = 10 + Math.random() * 15 + 's';
                 floatingHeartsContainer.appendChild(heart);
             }
         });
