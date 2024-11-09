@@ -5,39 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Wedding Invitation</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Great+Vibes|Playfair+Display:400,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Raleway', sans-serif;
-            background: linear-gradient(to bottom, #ffd1dc, #ffb6c1);
+            background: linear-gradient(to bottom, #fff0f5, #ffe4e1);
             color: #333;
             overflow-x: hidden;
             position: relative;
         }
         .navbar {
-            background: rgba(240, 240, 240, 0.8);
+            background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px);
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
         }
         .navbar-brand {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5em;
-            color: #b8a078;
+            font-family: 'Great Vibes', cursive;
+            font-size: 3em;
+            color: #c48f65;
         }
         .navbar-nav .nav-link {
             font-weight: 600;
             color: #555;
         }
-        .header-text {
-            font-family: 'Playfair Display', serif;
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            background: url('assets/images/My-New-Project_03b31ca9aa5f73dd42.jpg') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+        }
+        .hero-text {
+            font-family: 'Great Vibes', cursive;
             font-size: 4em;
-            color: #b8a078;
-            margin-top: 60px;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            margin-bottom: 0.5em;
+        }
+        .hero-subtext {
+            font-size: 1.5em;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
         }
         .rounded-section {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             padding: 50px;
             margin: 30px;
             border-radius: 25px;
@@ -49,14 +63,14 @@
             margin-right: auto;
         }
         .section-title {
-            font-size: 2.5em;
-            font-family: 'Playfair Display', serif;
-            color: #b8a078;
+            font-size: 3em;
+            font-family: 'Great Vibes', cursive;
+            color: #c48f65;
             margin-bottom: 20px;
             text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
         }
         .countdown {
-            font-size: 1.5em;
+            font-size: 1.8em;
             color: #555;
             margin: 30px 0;
             text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
@@ -76,7 +90,7 @@
             height: 40px;
             background: url('https://i.imgur.com/j1rE3z8.png') no-repeat center center;
             background-size: contain;
-            animation: floatHeart 10s infinite ease-in-out;
+            animation: floatHeart 12s infinite ease-in-out;
         }
         @keyframes floatHeart {
             0% {
@@ -84,18 +98,18 @@
                 opacity: 1;
             }
             50% {
-                transform: translateY(-30vh) translateX(20vw) scale(1.5);
+                transform: translateY(-40vh) translateX(25vw) scale(1.5);
                 opacity: 0.8;
             }
             100% {
-                transform: translateY(-60vh) translateX(-25vw) scale(1);
+                transform: translateY(-80vh) translateX(-25vw) scale(1);
                 opacity: 0;
             }
         }
         footer {
             margin-top: 60px;
             padding: 30px;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             border-top: 1px solid #e3e3e3;
             text-align: center;
             border-radius: 25px;
@@ -103,19 +117,22 @@
         }
         .photo-item {
             width: 100%;
-            animation: floatPhoto 5s infinite alternate ease-in-out, fadeInUp 2s ease-in-out;
+            animation: floatPhoto 6s infinite alternate ease-in-out, fadeInUp 2s ease-in-out;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .photo-item:hover {
-            transform: scale(1.1) rotate(3deg);
-            box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.25);
+            transform: scale(1.15) rotate(3deg);
+            box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3);
         }
         .photo-item-container {
             padding: 20px;
-            max-width: 500px;
+            max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-            animation: rotateIn 3s ease-in-out;
+            animation: rotateIn 4s ease-in-out;
+        }
+        .photo-item-container img {
+            border-radius: 15px;
         }
         @keyframes fadeInUp {
             0% {
@@ -142,7 +159,7 @@
                 transform: translateY(0) scale(1);
             }
             100% {
-                transform: translateY(-15px) scale(1.05);
+                transform: translateY(-20px) scale(1.1);
             }
         }
     </style>
@@ -217,6 +234,11 @@
             </div>
         </div>
     </nav>
+
+    <section class="hero-section">
+        <h1 class="hero-text">Kha & Van</h1>
+        <p class="hero-subtext">We're Getting Married!<br>29/12/2024</p>
+    </section>
 
     <div class="container invitation-section text-center rounded-section mt-5">
         <h1 class="header-text">You're Invited!</h1>
