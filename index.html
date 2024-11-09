@@ -39,18 +39,20 @@
             align-items: center;
             color: #fff;
             text-align: center;
+            border: 5px solid #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
         }
         .hero-text {
             font-family: 'Great Vibes', cursive;
             font-size: 4em;
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
             margin-bottom: 0.5em;
-            color: #ffcccc;
+            color: #ffffff;
         }
         .hero-subtext {
             font-size: 1.5em;
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
-            color: #ffcccc;
+            color: #ffffff;
         }
         .rounded-section {
             background: rgba(255, 255, 255, 0.95);
@@ -164,6 +166,21 @@
                 transform: translateY(-20px) scale(1.1);
             }
         }
+        .music-toggle-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #c48f65;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            font-size: 1.5em;
+            z-index: 1000;
+        }
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -194,6 +211,24 @@
                 hiddenAudio.play();
             });
 
+            // Music Toggle Button
+            const musicToggleButton = document.createElement('button');
+            musicToggleButton.className = 'music-toggle-btn';
+            musicToggleButton.innerHTML = '&#128266;';
+            document.body.appendChild(musicToggleButton);
+
+            let isPlaying = true;
+            musicToggleButton.addEventListener('click', function() {
+                if (isPlaying) {
+                    hiddenAudio.muted = true;
+                    musicToggleButton.innerHTML = '&#128263;';
+                } else {
+                    hiddenAudio.muted = false;
+                    musicToggleButton.innerHTML = '&#128266;';
+                }
+                isPlaying = !isPlaying;
+            });
+
             // Floating Hearts Animation
             const floatingHeartsContainer = document.createElement('div');
             floatingHeartsContainer.className = 'floating-hearts-container';
@@ -215,9 +250,7 @@
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">Kha & Van</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
@@ -297,6 +330,36 @@
             </div>
             <button type="submit" class="btn btn-warning">RSVP</button>
         </form>
+    </section>
+
+    <section id="events" class="events-section text-center rounded-section">
+        <h2 class="section-title">Sự Kiện Cưới</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="event-item rounded-section p-3 mb-4">
+                    <h3 class="event-title">Lễ Đám Hỏi</h3>
+                    <p>01/12/2024</p>
+                    <p>Địa điểm: 123 Đường ABC, Phường XYZ, TP. Hồ Chí Minh</p>
+                    <button class="btn btn-outline-primary">Thêm vào Lịch</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="event-item rounded-section p-3 mb-4">
+                    <h3 class="event-title">Lễ Đám Cưới Tổ Chức Trong Nhà Thờ</h3>
+                    <p>28/12/2024</p>
+                    <p>Địa điểm: Nhà Thờ Lớn, 456 Đường DEF, Phường MNO, TP. Hồ Chí Minh</p>
+                    <button class="btn btn-outline-primary">Thêm vào Lịch</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="event-item rounded-section p-3 mb-4">
+                    <h3 class="event-title">Ngày Hôn Lễ Diễn Ra</h3>
+                    <p>29/12/2024</p>
+                    <p>Địa điểm: The Adora Premium, 803 Đ. Nguyễn Văn Linh, Tân Phú, Quận 7, Hồ Chí Minh</p>
+                    <button class="btn btn-outline-primary">Thêm vào Lịch</button>
+                </div>
+            </div>
+        </div>
     </section>
 
     <footer>
