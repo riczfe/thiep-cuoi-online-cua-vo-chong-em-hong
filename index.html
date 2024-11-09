@@ -10,7 +10,7 @@
     <style>
         body {
             font-family: 'Raleway', sans-serif;
-            background: linear-gradient(to bottom, #f3f3f3, #c0b283);
+            background: linear-gradient(to bottom, #ffd1dc, #ffb6c1);
             color: #333;
             overflow-x: hidden;
             position: relative;
@@ -112,8 +112,6 @@
         }
         .photo-item-container {
             padding: 20px;
-            border-radius: 25px;
-            background: rgba(255, 255, 255, 0.9);
             max-width: 500px;
             margin-left: auto;
             margin-right: auto;
@@ -164,23 +162,25 @@
             }
             setInterval(updateCountdown, 1000);
 
-            // Hidden YouTube Music - Fix to ensure autoplay always works
-            var hiddenAudio = document.createElement('iframe');
-            hiddenAudio.src = 'https://www.youtube.com/embed/b_EF-fRnqWs?autoplay=1&loop=1&playlist=b_EF-fRnqWs&mute=0';
-            hiddenAudio.width = 1;
-            hiddenAudio.height = 1;
-            hiddenAudio.frameBorder = 0;
-            hiddenAudio.allow = 'autoplay; encrypted-media';
-            hiddenAudio.style.position = 'absolute';
-            hiddenAudio.style.left = '-9999px';
+            // Hidden MP3 Music Autoplay
+            var hiddenAudio = document.createElement('audio');
+            hiddenAudio.src = 'assets/audio/weddingmusic.mp3';
+            hiddenAudio.autoplay = true;
+            hiddenAudio.loop = true;
+            hiddenAudio.style.display = 'none';
             document.body.appendChild(hiddenAudio);
+            hiddenAudio.play();
+
+            document.addEventListener('click', function() {
+                hiddenAudio.play();
+            });
 
             // Floating Hearts Animation
             const floatingHeartsContainer = document.createElement('div');
             floatingHeartsContainer.className = 'floating-hearts-container';
             document.body.appendChild(floatingHeartsContainer);
 
-            for (let i = 0; i < 50; i++) {
+            for (let i = 0; i < 100; i++) {
                 const heart = document.createElement('div');
                 heart.className = 'floating-heart';
                 heart.style.top = Math.random() * 100 + 'vh';
