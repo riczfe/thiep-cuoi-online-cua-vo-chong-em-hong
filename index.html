@@ -1,421 +1,379 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thiệp Cưới Của Chúng Tôi</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Great+Vibes|Playfair+Display:400,700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600&display=swap" rel="stylesheet">
+    <title>Wedding Invitation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Roboto:wght@300;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Raleway', sans-serif;
-            background: linear-gradient(to bottom, #fff0f5, #ffe4e1);
-            color: #333;
-            overflow-x: hidden;
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+            background-color: #e6e0d8;
+            color: #5f564d;
+        }
+
+        .container {
+            max-width: 768px;
+            margin: 50px auto;
+            background-color: #fdfcf9;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 40px;
             position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease-in-out;
         }
-        .navbar {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+
+        .container.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
-        .navbar-brand {
+
+        .header-banner {
+            width: 100%;
+            background: linear-gradient(90deg, #dccbb6, #b8a190);
+            color: #ffffff;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 24px;
             font-family: 'Great Vibes', cursive;
-            font-size: 3em;
-            color: #c48f65;
-        }
-        .navbar-nav .nav-link {
-            font-weight: 600;
-            color: #555;
-        }
-        .hero-section {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
             position: relative;
-            height: 90vh;
-            background: url('assets/images/My-New-Project_03b31ca9aa5f73dd42.jpg') no-repeat center center/cover;
+        }
+
+        .header-banner span {
+            display: inline-block;
+            padding: 10px 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            font-size: 28px;
+            color: #fdfcf9;
+        }
+
+        .image-section {
+            text-align: center;
+            margin: 40px 0 40px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease-in-out 0.4s;
+        }
+
+        .image-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .image-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .couple-names {
+            text-align: center;
+            margin: 30px 0;
+            font-size: 36px;
+            font-weight: bold;
+            font-family: 'Great Vibes', cursive;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease-in-out 0.6s;
+        }
+
+        .couple-names.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .actions {
             display: flex;
-            flex-direction: column;
+            justify-content: center;
+            gap: 15px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease-in-out 0.8s;
+        }
+
+        .actions.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .actions button {
+            padding: 15px 30px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #d1c4b2;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            font-family: 'Great Vibes', cursive;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 20px;
+        }
+
+        .actions button:hover {
+            background-color: #b5a491;
+            transform: scale(1.05);
+        }
+
+        .section-three {
+            max-width: 768px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fdfcf9;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease-in-out 1s;
+        }
+
+        .section-three.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .album-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 15px;
+        }
+
+        .album-grid img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease-in-out;
+        }
+
+        .album-grid img.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .calendar-section {
+            max-width: 768px;
+            margin: 50px auto;
+            padding: 40px;
+            background-color: #fdfcf9;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            border-radius: 15px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease-in-out 1.2s;
+        }
+
+        .calendar-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .calendar-header {
+            display: flex;
             justify-content: center;
             align-items: center;
-            color: #fff;
-            text-align: center;
-            border: 5px solid #fff;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-        }
-        .hero-text {
-            font-family: 'Great Vibes', cursive;
-            font-size: 3.5em;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
-            margin-bottom: 0.5em;
-            color: #f8f9fa;
-        }
-        .hero-subtext {
-            font-size: 1.3em;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
-            color: #f8f9fa;
-        }
-        .rounded-section {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 40px;
-            margin: 20px;
-            border-radius: 25px;
-            box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15);
-            position: relative;
-            z-index: 1;
-            max-width: 1000px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .section-title {
-            font-size: 2.5em;
-            font-family: 'Great Vibes', cursive;
-            color: #c48f65;
-            margin-bottom: 20px;
-            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
-        }
-        .countdown {
-            font-size: 1.8em;
-            color: #2b6777;
-            margin: 20px 0;
-            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
-        }
-        .countdown-box {
-            display: inline-block;
-            padding: 10px;
-            border-radius: 10px;
-            border: 2px solid #2b6777;
-            margin: 3px;
-            font-size: 1.1em;
-            color: #2b6777;
-        }
-        .countdown-box span {
-            display: block;
-            font-size: 2em;
+            gap: 15px;
+            margin-bottom: 30px;
+            font-size: 28px;
             font-weight: bold;
         }
-        .floating-hearts-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 10;
-        }
-        .floating-heart {
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            background: url('https://img.icons8.com/emoji/48/heart-emoji.png') no-repeat center center;
-            background-size: contain;
-            animation: floatHeart 15s infinite ease-in-out;
-        }
-        @keyframes floatHeart {
-            0% {
-                transform: translateY(0) translateX(0) scale(1);
-                opacity: 1;
-            }
-            50% {
-                transform: translateY(-50vh) translateX(30vw) scale(1.5);
-                opacity: 0.8;
-            }
-            100% {
-                transform: translateY(-100vh) translateX(-30vw) scale(1);
-                opacity: 0;
-            }
-        }
-        footer {
-            margin-top: 40px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.95);
-            border-top: 1px solid #e3e3e3;
-            text-align: center;
-            border-radius: 25px;
-            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-        }
-        .photo-item {
-            width: 100%;
-            animation: floatPhoto 6s infinite alternate ease-in-out, fadeInUp 2s ease-in-out;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .photo-item:hover {
-            transform: scale(1.15) rotate(3deg);
-            box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3);
-        }
-        .photo-item-container {
-            padding: 15px;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-            animation: rotateIn 4s ease-in-out;
-        }
-        .photo-item-container img {
-            border-radius: 15px;
-        }
-        @keyframes fadeInUp {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        @keyframes rotateIn {
-            0% {
-                opacity: 0;
-                transform: rotate(-10deg) scale(0.8);
-            }
-            100% {
-                opacity: 1;
-                transform: rotate(0deg) scale(1);
-            }
-        }
-        @keyframes floatPhoto {
-            0% {
-                transform: translateY(0) scale(1);
-            }
-            100% {
-                transform: translateY(-20px) scale(1.1);
-            }
-        }
-        .music-toggle-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #c48f65;
-            color: #fff;
-            border: none;
-            border-radius: 50%;
+
+        .calendar-header .icon {
+            display: inline-block;
             width: 50px;
             height: 50px;
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
-            cursor: pointer;
-            font-size: 1.2em;
-            z-index: 1000;
+            background-color: #d7bdbb;
+            border-radius: 50%;
+            line-height: 50px;
+            text-align: center;
+            color: #ffffff;
+            font-size: 20px;
         }
-        .event-item {
-            background: #fdf3f3;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s;
-            font-family: 'Playfair Display', serif;
+
+        .calendar {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+            font-size: 20px;
+            color: #5f564d;
         }
-        .event-item:hover {
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-            transform: translateY(-5px);
+
+        .calendar th {
+            padding: 10px 0;
+            font-size: 18px;
         }
-        .event-title {
-            font-size: 2em;
-            color: #c48f65;
+
+        .calendar td {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .calendar tbody td.active {
+            background-color: #dccbb6;
+            color: #ffffff;
+            border-radius: 50%;
             font-weight: bold;
-            margin-bottom: 10px;
         }
-        .btn-outline-primary {
-            color: #c48f65;
-            border-color: #c48f65;
+
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            width: 8px;
+            height: 8px;
+            background-color: white;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
+            animation: fall linear infinite;
+            z-index: 9999;
         }
-        .btn-outline-primary:hover {
-            background-color: #c48f65;
-            color: #fff;
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
         }
     </style>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Countdown Timer
-            function updateCountdown() {
-                const weddingDate = new Date('2024-12-29T00:00:00');
-                const now = new Date();
-                const timeDiff = weddingDate - now;
-                const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
-
-                document.getElementById('countdown').innerHTML = `
-                    <div class="countdown-box">
-                        <span>${days}</span>
-                        Ngày
-                    </div>
-                    <div class="countdown-box">
-                        <span>${hours}</span>
-                        Giờ
-                    </div>
-                    <div class="countdown-box">
-                        <span>${minutes}</span>
-                        Phút
-                    </div>
-                    <div class="countdown-box">
-                        <span>${seconds}</span>
-                        Giây
-                    </div>`;
-            }
-            setInterval(updateCountdown, 1000);
-
-            // Hidden MP3 Music Autoplay
-            var hiddenAudio = document.createElement('audio');
-            hiddenAudio.src = 'assets/audio/weddingmusic.mp3';
-            hiddenAudio.autoplay = true;
-            hiddenAudio.loop = true;
-            hiddenAudio.style.display = 'none';
-            document.body.appendChild(hiddenAudio);
-            hiddenAudio.play();
-
-            document.addEventListener('click', function() {
-                hiddenAudio.play();
+        document.addEventListener("DOMContentLoaded", () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                    }
+                });
             });
 
-            // Music Toggle Button
-            const musicToggleButton = document.createElement('button');
-            musicToggleButton.className = 'music-toggle-btn';
-            musicToggleButton.innerHTML = '&#128266;';
-            document.body.appendChild(musicToggleButton);
-
-            let isPlaying = true;
-            musicToggleButton.addEventListener('click', function() {
-                if (isPlaying) {
-                    hiddenAudio.muted = true;
-                    musicToggleButton.innerHTML = '&#128263;';
-                } else {
-                    hiddenAudio.muted = false;
-                    musicToggleButton.innerHTML = '&#128266;';
-                }
-                isPlaying = !isPlaying;
+            document.querySelectorAll(".container, .header-banner, .image-section, .couple-names, .actions, .section-three, .calendar-section, .album-grid img").forEach((el) => {
+                observer.observe(el);
             });
 
-            // Floating Hearts Animation
-            const floatingHeartsContainer = document.querySelector('.floating-hearts-container');
+            // Snowfall Effect
+            const createSnowflake = () => {
+                const snowflake = document.createElement("div");
+                snowflake.classList.add("snowflake");
+                snowflake.style.left = Math.random() * 100 + "vw";
+                snowflake.style.animationDuration = Math.random() * 3 + 2 + "s";
+                snowflake.style.opacity = Math.random();
+                snowflake.style.transform = `scale(${Math.random() * 0.5 + 0.5})`;
+                document.body.appendChild(snowflake);
 
-            for (let i = 0; i < 200; i++) {
-                const heart = document.createElement('div');
-                heart.className = 'floating-heart';
-                heart.style.top = Math.random() * 100 + 'vh';
-                heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.animationDuration = 10 + Math.random() * 15 + 's';
-                floatingHeartsContainer.appendChild(heart);
-            }
+                setTimeout(() => {
+                    snowflake.remove();
+                }, 5000);
+            };
+
+            setInterval(createSnowflake, 100);
         });
     </script>
 </head>
 <body>
-    <div class="floating-hearts-container"></div>
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">Kha & Van</a>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Trang Chủ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#details">Chi Tiết</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#photos">Hình Ảnh</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#rsvp">Tham Dự</a>
-                    </li>
-                </ul>
+    <div class="container">
+        <div class="header-banner">
+            <span>29/12 - Chúa Nhật</span>
+        </div>
+        <div class="image-section">
+            <img src="assets/images/cover.JPG" alt="Wedding Photo">
+        </div>
+        <div class="couple-names">
+            Mộng Vân <span class="icon">&#x1F48D;</span> Anh Kha
+        </div>
+        <div class="section-two">
+            <div class="actions">
+                <button><span>&#x1F4AC;</span> Gửi lời chúc</button>
+                <button><span>&#x1F4E8;</span> Xác nhận tham dự</button>
+                <button><span>&#x1F4B0;</span> Mừng cưới</button>
             </div>
         </div>
-    </nav>
-
-    <section class="hero-section">
-        <h1 class="hero-text">Kha & Van</h1>
-        <p class="hero-subtext">Chúng Tôi Sẽ Kết Hôn!<br>29/12/2024</p>
-    </section>
-
-    <div class="container invitation-section text-center rounded-section mt-5">
-        <h1 class="header-text">Bạn Được Mời!</h1>
-        <p class="lead">Hãy cùng chung vui với</p>
-        <h2>TRẦN NGUYỄN ANH KHA & ĐÀO THỊ MỘNG VÂN</h2>
-        <p class="lead">vào ngày <strong>29/12/2024</strong></p>
-        <div id="countdown" class="countdown"></div>
+        <div class="section-three">
+            <h2>Album Hình Cưới</h2>
+            <p>Được ai đó yêu sâu sắc sẽ mang lại cho bạn sức mạnh, trong khi yêu ai đó sâu sắc sẽ cho bạn dũng khí.</p>
+            <div class="album-grid">
+                <img src="assets/images/3.jpeg" alt="Wedding Photo 1">
+                <img src="assets/images/4.jpeg" alt="Wedding Photo 2">
+                <img src="assets/images/5.jpeg" alt="Wedding Photo 3">
+                <img src="assets/images/6.jpeg" alt="Wedding Photo 4">
+                <img src="assets/images/7.jpeg" alt="Wedding Photo 5">
+                <img src="assets/images/8.jpeg" alt="Wedding Photo 6">
+                <img src="assets/images/9.jpeg" alt="Wedding Photo 7">
+                <img src="assets/images/10.jpeg" alt="Wedding Photo 8">
+                <img src="assets/images/11.jpg" alt="Wedding Photo 9">
+            </div>
+        </div>
+        <div class="calendar-section">
+            <div class="calendar-header">
+                <div class="icon">🎀</div>
+                <div>THÁNG 12 / 2024</div>
+            </div>
+            <table class="calendar">
+                <thead>
+                    <tr>
+                        <th>Thứ 2</th>
+                        <th>Thứ 3</th>
+                        <th>Thứ 4</th>
+                        <th>Thứ 5</th>
+                        <th>Thứ 6</th>
+                        <th>Thứ 7</th>
+                        <th>CN</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>12</td>
+                        <td>13</td>
+                        <td>14</td>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>17</td>
+                    </tr>
+                    <tr>
+                        <td>18</td>
+                        <td>19</td>
+                        <td>20</td>
+                        <td>21</td>
+                        <td>22</td>
+                        <td>23</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>25</td>
+                        <td>26</td>
+                        <td>27</td>
+                        <td>28</td>
+                        <td class="active">29</td>
+                        <td>30</td>
+                        <td>31</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-
-    <section id="details" class="details-section text-center rounded-section">
-        <h2 class="section-title">Chi Tiết</h2>
-        <p>Buổi lễ sẽ diễn ra tại:</p>
-        <p><strong>The Adora Premium</strong><br>803 Đ. Nguyễn Văn Linh, Tân Phú, Quận 7, Hồ Chí Minh 72908</p>
-        <p>Tiệc cưới sẽ được tổ chức tại cùng địa điểm.</p>
-    </section>
-
-    <section id="photos" class="photos-section text-center rounded-section">
-        <h2 class="section-title">Hình Ảnh Của Chúng Tôi</h2>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="photo-item-container">
-                    <img src="assets/images/87A688FD-D61C-412A-8947-AB6C250375E0_1_105_c.jpeg" class="photo-item" alt="Ảnh 1">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="photo-item-container">
-                    <img src="assets/images/53BF2E04-F8EE-4967-A311-6D0BF9A7CFFE_1_105_c.jpeg" class="photo-item" alt="Ảnh 2">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="photo-item-container">
-                    <img src="assets/images/32F7D62E-1943-4CCC-9289-C2E4CC23F6BA_1_105_c.jpeg" class="photo-item" alt="Ảnh 3">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="photo-item-container">
-                    <img src="assets/images/5B6ADDB2-0C4F-4D03-B3F3-04E358B02CE7_1_105_c.jpeg" class="photo-item" alt="Ảnh 4">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="rsvp" class="rsvp-section text-center rounded-section">
-        <h2 class="section-title">Tham Dự</h2>
-        <p>Vui lòng cho chúng tôi biết nếu bạn sẽ tham dự!</p>
-        <form>
-            <div class="mb-3">
-                <label for="name" class="form-label">Tên Của Bạn</label>
-                <input type="text" class="form-control" id="name" placeholder="Nhập tên của bạn">
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Địa chỉ Email</label>
-                <input type="email" class="form-control" id="email" placeholder="name@example.com">
-            </div>
-            <button type="submit" class="btn btn-warning">Tham Dự</button>
-        </form>
-    </section>
-
-    <section id="events" class="events-section text-center rounded-section">
-        <h2 class="section-title">Sự Kiện Cưới</h2>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="event-item rounded-section p-4 mb-4">
-                    <h3 class="event-title">Lễ Đám Hỏi</h3>
-                    <p class="event-date">01/12/2024</p>
-                    <button class="btn btn-outline-primary">Thêm vào Lịch</button>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="event-item rounded-section p-4 mb-4">
-                    <h3 class="event-title">Lễ Đám Cưới Tổ Chức Trong Nhà Thờ</h3>
-                    <p class="event-date">28/12/2024</p>
-                    <p>Địa điểm: Nhà thờ Thuận Phát, 253 Đ. Trần Xuân Soạn, Tân Thuận Tây, Quận 7, Hồ Chí Minh 72911</p>
-                    <button class="btn btn-outline-primary">Thêm vào Lịch</button>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="event-item rounded-section p-4 mb-4">
-                    <h3 class="event-title">Ngày Hôn Lễ Diễn Ra</h3>
-                    <p class="event-date">29/12/2024</p>
-                    <p>Địa điểm: The Adora Premium, 803 Đ. Nguyễn Văn Linh, Tân Phú, Quận 7, Hồ Chí Minh</p>
-                    <button class="btn btn-outline-primary">Thêm vào Lịch</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>Chúng tôi không thể chờ đợi để chung vui với bạn!</p>
-    </footer>
 </body>
 </html>
