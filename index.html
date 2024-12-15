@@ -52,6 +52,47 @@
             font-size: 24px;
             font-family: 'Great Vibes', cursive;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-banner::before,
+        .header-banner::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border: 5px solid rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            top: -50px;
+            left: 10%;
+            animation: swirl 10s infinite ease-in-out;
+        }
+
+        .header-banner::after {
+            left: auto;
+            right: 10%;
+            top: -70px;
+            animation-delay: 5s;
+        }
+
+        @keyframes swirl {
+            0%, 100% {
+                transform: scale(0.8) rotate(0deg);
+            }
+            50% {
+                transform: scale(1.2) rotate(360deg);
+            }
+        }
+
+        .header-banner span {
+            display: inline-block;
+            padding: 10px 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            font-size: 28px;
+            color: #fdfcf9;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
 
         .image-section {
@@ -184,6 +225,24 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            width: 8px;
+            height: 8px;
+            background-color: white;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
+            animation: fall linear infinite;
+            z-index: 9999;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
@@ -198,12 +257,32 @@
             document.querySelectorAll(".container, .header-banner, .image-section, .couple-names, .actions, .section-three, .album-grid img").forEach((el) => {
                 observer.observe(el);
             });
+
+            // Snowfall Effect
+            const createSnowflake = () => {
+                const snowflake = document.createElement("div");
+                snowflake.classList.add("snowflake");
+                snowflake.style.left = Math.random() * 100 + "vw";
+                snowflake.style.animationDuration = Math.random() * 3 + 2 + "s";
+                snowflake.style.opacity = Math.random();
+                snowflake.style.transform = `scale(${Math.random() * 0.5 + 0.5})`;
+                document.body.appendChild(snowflake);
+
+                // Remove snowflake after animation ends
+                setTimeout(() => {
+                    snowflake.remove();
+                }, 5000);
+            };
+
+            setInterval(createSnowflake, 100);
         });
     </script>
 </head>
 <body>
     <div class="container">
-        <div class="header-banner">29/12 - Chúa Nhật</div>
+        <div class="header-banner">
+            <span>29/12 - Chúa Nhật</span>
+        </div>
         <div class="image-section">
             <img src="assets/images/cover.JPG" alt="Wedding Photo">
         </div>
@@ -228,51 +307,10 @@
                 <img src="assets/images/7.jpeg" alt="Wedding Photo 5">
                 <img src="assets/images/8.jpeg" alt="Wedding Photo 6">
                 <img src="assets/images/9.jpeg" alt="Wedding Photo 7">
-                <img src="assets/images/10.jpeg"alt="Wedding Photo 8">
+                <img src="assets/images/10.jpeg" alt="Wedding Photo 8">
                 <img src="assets/images/11.jpg" alt="Wedding Photo 9">
             </div>
         </div>
     </div>
-
-    <script>
-        // Snowfall Effect
-        document.addEventListener("DOMContentLoaded", () => {
-            const createSnowflake = () => {
-                const snowflake = document.createElement("div");
-                snowflake.classList.add("snowflake");
-                snowflake.style.left = Math.random() * 100 + "vw";
-                snowflake.style.animationDuration = Math.random() * 3 + 2 + "s";
-                snowflake.style.opacity = Math.random();
-                snowflake.style.transform = `scale(${Math.random() * 0.5 + 0.5})`;
-                document.body.appendChild(snowflake);
-
-                // Remove snowflake after animation ends
-                setTimeout(() => {
-                    snowflake.remove();
-                }, 5000);
-            };
-
-            setInterval(createSnowflake, 100);
-        });
-    </script>
-    <style>
-        .snowflake {
-            position: fixed;
-            top: -10px;
-            width: 8px;
-            height: 8px;
-            background-color: white;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-            border-radius: 50%;
-            animation: fall linear infinite;
-            z-index: 9999;
-        }
-
-        @keyframes fall {
-            to {
-                transform: translateY(100vh);
-            }
-        }
-    </style>
 </body>
 </html>
