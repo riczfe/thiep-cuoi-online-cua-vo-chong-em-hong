@@ -18,6 +18,7 @@
             background-color: #fdfcf9;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             padding: 20px;
+            position: relative;
         }
 
         .header {
@@ -27,15 +28,21 @@
 
         .header .date {
             display: inline-block;
-            padding: 10px 20px;
+            padding: 15px;
             background-color: #cdc1aa;
-            border-radius: 50px;
+            border-radius: 50%;
             font-size: 18px;
             color: #ffffff;
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
         }
 
         .image-section {
             text-align: center;
+            margin: 20px 0;
         }
 
         .image-section img {
@@ -85,13 +92,13 @@
 <body>
     <div class="container">
         <div class="header">
-            <div class="date">04 / 04<br>Thứ 5</div>
+            <div class="date">29/12<br>Chúa Nhật</div>
         </div>
         <div class="image-section">
-            <img src="assets/images/1.png" alt="Wedding Photo">
+            <img src="assets/images/cover.JPG" alt="Wedding Photo">
         </div>
         <div class="couple-names">
-            Kiến Văn <span class="icon">&#x1F48D;</span> Việt Hoài
+            Mộng Vân <span class="icon">&#x1F48D;</span> Anh Kha
         </div>
         <div class="actions">
             <button>Gửi lời chúc</button>
