@@ -115,24 +115,30 @@
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin-top: 40px;
         }
 
         .actions button {
-            padding: 10px 20px;
+            padding: 15px 30px;
             font-size: 16px;
             color: #ffffff;
-            background-color: #8b7e68;
+            background-color: #d1c4b2;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.3s ease;
             font-family: 'Roboto', sans-serif;
-            animation: fadeInUp 2s ease-in-out;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .actions button span {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
         }
 
         .actions button:hover {
-            background-color: #726858;
+            background-color: #b5a491;
             transform: scale(1.05);
         }
 
@@ -140,15 +146,55 @@
             outline: none;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .section-two {
+            max-width: 768px;
+            margin: 0 auto;
+            background-color: #ece6db; /* Contrast background color */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .section-two .actions {
+            margin-top: 20px;
+        }
+
+        .section-three {
+            max-width: 768px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fdfcf9;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .section-three h2 {
+            font-family: 'Great Vibes', cursive;
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .section-three p {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            color: #5f564d;
+            margin-bottom: 30px;
+        }
+
+        .album-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 15px;
+        }
+
+        .album-grid img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
@@ -163,10 +209,27 @@
         <div class="couple-names">
             Mộng Vân <span class="icon">&#x1F48D;</span> Anh Kha
         </div>
-        <div class="actions">
-            <button>Gửi lời chúc</button>
-            <button>Xác nhận tham dự</button>
-            <button>Mừng cưới</button>
+        <div class="section-two">
+            <div class="actions">
+                <button><span>&#x1F4AC;</span> Gửi lời chúc</button>
+                <button><span>&#x1F4E8;</span> Xác nhận tham dự</button>
+                <button><span>&#x1F4B0;</span> Mừng cưới</button>
+            </div>
+        </div>
+        <div class="section-three">
+            <h2>Album Hình Cưới</h2>
+            <p>Được ai đó yêu sâu sắc sẽ mang lại cho bạn sức mạnh, trong khi yêu ai đó sâu sắc sẽ cho bạn dũng khí.</p>
+            <div class="album-grid">
+                <img src="assets/images/3.jpeg" alt="Wedding Photo 1">
+                <img src="assets/images/4.jpeg" alt="Wedding Photo 2">
+                <img src="assets/images/5.jpeg" alt="Wedding Photo 3">
+                <img src="assets/images/6.jpeg" alt="Wedding Photo 4">
+                <img src="assets/images/7.jpeg" alt="Wedding Photo 5">
+                <img src="assets/images/8.jpeg" alt="Wedding Photo 6">
+                <img src="assets/images/9.jpeg" alt="Wedding Photo 7">
+                <img src="assets/images/10.jpeg" alt="Wedding Photo 8">
+                <img src="assets/images/11.jpg" alt="Wedding Photo 9">
+            </div>
         </div>
     </div>
 </body>
