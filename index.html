@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wedding Invitation</title>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Roboto:wght@300;700&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
@@ -15,16 +15,16 @@
 
         .container {
             max-width: 768px;
-            margin: 0 auto;
+            margin: 50px auto; /* Added top margin */
             background-color: #fdfcf9;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 20px;
+            padding: 40px; /* Increased padding for a spacious look */
             position: relative;
         }
 
         .header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
 
         .header .date {
@@ -37,18 +37,25 @@
             font-size: 22px;
             color: #ffffff;
             position: absolute;
-            top: 10px;
+            top: 50px; /* Adjusted space above the date */
             left: 50%;
             transform: translateX(-50%);
             text-align: center;
-            padding: 25px 0;
+            padding: 30px 0; /* Adjusted padding for equal spacing */
             box-sizing: border-box;
-            font-family: 'Playfair Display', serif;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+        }
+
+        .header .date span {
+            font-family: 'Great Vibes', cursive;
+            font-size: 28px;
+            display: block;
         }
 
         .image-section {
             text-align: center;
-            margin: 20px 0;
+            margin: 80px 0 40px; /* Added more space above and below the image */
         }
 
         .image-section img {
@@ -59,8 +66,8 @@
 
         .couple-names {
             text-align: center;
-            margin: 20px 0;
-            font-size: 30px;
+            margin: 30px 0;
+            font-size: 36px;
             font-weight: bold;
             font-family: 'Great Vibes', cursive;
         }
@@ -73,7 +80,7 @@
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin-top: 20px;
+            margin-top: 40px; /* Increased spacing below the names */
         }
 
         .actions button {
@@ -85,7 +92,7 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            font-family: 'Playfair Display', serif;
+            font-family: 'Roboto', sans-serif;
         }
 
         .actions button:hover {
@@ -100,7 +107,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <div class="date">29/12<br>Chúa Nhật</div>
+            <div class="date">29/12<br><span>Chúa Nhật</span></div>
         </div>
         <div class="image-section">
             <img src="assets/images/cover.JPG" alt="Wedding Photo">
