@@ -31,24 +31,19 @@
         }
 
         .header-banner {
-            width: 100%;
-            background: linear-gradient(90deg, #dccbb6, #b8a190);
-            color: #ffffff;
-            text-align: center;
-            padding: 20px 0;
-            font-size: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            background: #dccbb6;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             font-family: 'Great Vibes', cursive;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            position: relative;
-        }
-
-        .header-banner span {
-            display: inline-block;
-            padding: 10px 20px;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 15px;
             font-size: 28px;
-            color: #fdfcf9;
+            color: #ffffff;
+            max-width: 300px;
+            margin: 20px auto;
+            text-align: center;
         }
 
         .image-section {
@@ -271,7 +266,6 @@
                 observer.observe(el);
             });
 
-            // Snowfall Effect
             const createSnowflake = () => {
                 const snowflake = document.createElement("div");
                 snowflake.classList.add("snowflake");
@@ -293,7 +287,7 @@
 <body>
     <div class="container">
         <div class="header-banner">
-            <span>29/12 - Chúa Nhật</span>
+            29/12 - Chúa Nhật
         </div>
         <div class="image-section">
             <img src="assets/images/cover.JPG" alt="Wedding Photo">
