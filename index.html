@@ -15,11 +15,23 @@
 
         .container {
             max-width: 768px;
-            margin: 50px auto; /* Added top margin */
+            margin: 50px auto;
             background-color: #fdfcf9;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 40px; /* Increased padding for a spacious look */
+            padding: 40px;
             position: relative;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .header {
@@ -37,14 +49,24 @@
             font-size: 22px;
             color: #ffffff;
             position: absolute;
-            top: 50px; /* Adjusted space above the date */
+            top: 50px;
             left: 50%;
             transform: translateX(-50%);
             text-align: center;
-            padding: 30px 0; /* Adjusted padding for equal spacing */
+            padding: 30px 0;
             box-sizing: border-box;
             font-family: 'Roboto', sans-serif;
             font-weight: 700;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(-10px);
+            }
         }
 
         .header .date span {
@@ -55,7 +77,19 @@
 
         .image-section {
             text-align: center;
-            margin: 80px 0 40px; /* Added more space above and below the image */
+            margin: 80px 0 40px;
+            animation: zoomIn 1.5s ease-in-out;
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
 
         .image-section img {
@@ -70,6 +104,7 @@
             font-size: 36px;
             font-weight: bold;
             font-family: 'Great Vibes', cursive;
+            animation: fadeIn 2s ease-in-out;
         }
 
         .couple-names .icon {
@@ -80,7 +115,7 @@
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin-top: 40px; /* Increased spacing below the names */
+            margin-top: 40px;
         }
 
         .actions button {
@@ -91,16 +126,29 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease;
             font-family: 'Roboto', sans-serif;
+            animation: fadeInUp 2s ease-in-out;
         }
 
         .actions button:hover {
             background-color: #726858;
+            transform: scale(1.05);
         }
 
         .actions button:focus {
             outline: none;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
