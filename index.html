@@ -223,6 +223,24 @@
             border-radius: 50%;
             font-weight: bold;
         }
+
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            width: 8px;
+            height: 8px;
+            background-color: white;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
+            animation: fall linear infinite;
+            z-index: 9999;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
