@@ -20,76 +20,51 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             padding: 40px;
             position: relative;
-            animation: fadeIn 2s ease-in-out;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease-in-out;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .container.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .header {
             text-align: center;
             margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease-in-out 0.2s;
         }
 
-        .header .date {
-            display: inline-block;
-            width: 120px;
-            height: 120px;
-            line-height: 1.2;
-            background-color: #cdc1aa;
-            border-radius: 50%;
-            font-size: 22px;
+        .header.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .header-banner {
+            width: 100%;
+            background: linear-gradient(90deg, #dccbb6, #b8a190);
             color: #ffffff;
-            position: absolute;
-            top: 50px;
-            left: 50%;
-            transform: translateX(-50%);
             text-align: center;
-            padding: 30px 0;
-            box-sizing: border-box;
-            font-family: 'Roboto', sans-serif;
-            font-weight: 700;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateX(-50%) translateY(0);
-            }
-            50% {
-                transform: translateX(-50%) translateY(-10px);
-            }
-        }
-
-        .header .date span {
+            padding: 20px 0;
+            font-size: 24px;
             font-family: 'Great Vibes', cursive;
-            font-size: 28px;
-            display: block;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
 
         .image-section {
             text-align: center;
-            margin: 80px 0 40px;
-            animation: zoomIn 1.5s ease-in-out;
+            margin: 40px 0 40px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease-in-out 0.4s;
         }
 
-        @keyframes zoomIn {
-            from {
-                transform: scale(0.8);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
+        .image-section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .image-section img {
@@ -104,17 +79,28 @@
             font-size: 36px;
             font-weight: bold;
             font-family: 'Great Vibes', cursive;
-            animation: fadeIn 2s ease-in-out;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease-in-out 0.6s;
         }
 
-        .couple-names .icon {
-            margin: 0 10px;
+        .couple-names.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .actions {
             display: flex;
             justify-content: center;
             gap: 15px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease-in-out 0.8s;
+        }
+
+        .actions.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .actions button {
@@ -126,15 +112,16 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.3s ease;
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Great Vibes', cursive;
             display: flex;
             align-items: center;
             gap: 10px;
+            font-size: 20px;
         }
 
         .actions button span {
             font-family: 'Playfair Display', serif;
-            font-size: 20px;
+            font-size: 24px;
         }
 
         .actions button:hover {
@@ -146,27 +133,20 @@
             outline: none;
         }
 
-        .section-two {
-            max-width: 768px;
-            margin: 0 auto;
-            background-color: #ece6db; /* Contrast background color */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-            text-align: center;
-            animation: fadeIn 2s ease-in-out;
-        }
-
-        .section-two .actions {
-            margin-top: 20px;
-        }
-
         .section-three {
             max-width: 768px;
             margin: 50px auto;
             padding: 20px;
             background-color: #fdfcf9;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 2s ease-in-out;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease-in-out 1s;
+        }
+
+        .section-three.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .section-three h2 {
@@ -195,14 +175,35 @@
             height: auto;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease-in-out;
+        }
+
+        .album-grid img.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                    }
+                });
+            });
+
+            document.querySelectorAll(".container, .header-banner, .image-section, .couple-names, .actions, .section-three, .album-grid img").forEach((el) => {
+                observer.observe(el);
+            });
+        });
+    </script>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <div class="date">29/12<br><span>Chúa Nhật</span></div>
-        </div>
+        <div class="header-banner">29/12 - Chúa Nhật</div>
         <div class="image-section">
             <img src="assets/images/cover.JPG" alt="Wedding Photo">
         </div>
@@ -227,10 +228,51 @@
                 <img src="assets/images/7.jpeg" alt="Wedding Photo 5">
                 <img src="assets/images/8.jpeg" alt="Wedding Photo 6">
                 <img src="assets/images/9.jpeg" alt="Wedding Photo 7">
-                <img src="assets/images/10.jpeg" alt="Wedding Photo 8">
+                <img src="assets/images/10.jpeg"alt="Wedding Photo 8">
                 <img src="assets/images/11.jpg" alt="Wedding Photo 9">
             </div>
         </div>
     </div>
+
+    <script>
+        // Snowfall Effect
+        document.addEventListener("DOMContentLoaded", () => {
+            const createSnowflake = () => {
+                const snowflake = document.createElement("div");
+                snowflake.classList.add("snowflake");
+                snowflake.style.left = Math.random() * 100 + "vw";
+                snowflake.style.animationDuration = Math.random() * 3 + 2 + "s";
+                snowflake.style.opacity = Math.random();
+                snowflake.style.transform = `scale(${Math.random() * 0.5 + 0.5})`;
+                document.body.appendChild(snowflake);
+
+                // Remove snowflake after animation ends
+                setTimeout(() => {
+                    snowflake.remove();
+                }, 5000);
+            };
+
+            setInterval(createSnowflake, 100);
+        });
+    </script>
+    <style>
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            width: 8px;
+            height: 8px;
+            background-color: white;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
+            animation: fall linear infinite;
+            z-index: 9999;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+    </style>
 </body>
 </html>
