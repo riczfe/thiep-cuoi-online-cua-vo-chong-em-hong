@@ -1,170 +1,103 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mộng Vân & Anh Kha</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <title>Wedding Invitation</title>
     <style>
         body {
             margin: 0;
-            font-family: 'Poppins', sans-serif;
-            background-color: #f9f9f9;
-            overflow-x: hidden;
+            font-family: Arial, sans-serif;
+            background-color: #e6e0d8;
+            color: #5f564d;
         }
 
-        nav {
-            background-color: #ffffff;
+        .container {
+            max-width: 768px;
+            margin: 0 auto;
+            background-color: #fdfcf9;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        nav .navbar-brand {
-            font-family: 'Great Vibes', cursive;
-            font-size: 2rem;
-            color: #5a5a5a;
-            animation: fadeInDown 1.5s;
-        }
-
-        .slideshow {
-            position: relative;
-            max-width: 600px;
-            margin: 50px auto;
-            perspective: 1000px;
-        }
-
-        .slides {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            backface-visibility: hidden;
-            transform-style: preserve-3d;
-            transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
-        }
-
-        .active {
-            z-index: 2;
-            opacity: 1;
-            transform: rotateY(0deg);
-        }
-
-        .fade-out {
-            z-index: 1;
-            opacity: 0;
-            transform: rotateY(180deg);
-        }
-
-        .content-wrapper {
-            margin: 20px auto;
             padding: 20px;
-            max-width: 600px;
+        }
+
+        .header {
             text-align: center;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            animation: slideInUp 1.5s;
+            margin-bottom: 20px;
         }
 
-        .content-wrapper h1 {
-            font-family: 'Great Vibes', cursive;
-            font-size: 2.5em;
-            color: #5a5a5a;
+        .header .date {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #cdc1aa;
+            border-radius: 50px;
+            font-size: 18px;
+            color: #ffffff;
         }
 
-        .details {
+        .image-section {
+            text-align: center;
+        }
+
+        .image-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .couple-names {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .couple-names .icon {
+            margin: 0 10px;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
             margin-top: 20px;
-            font-size: 1.1em;
-            color: #555;
         }
 
-        .details p {
-            margin: 5px 0;
+        .actions button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #8b7e68;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
-        @media only screen and (max-width: 768px) {
-            .slideshow {
-                margin: 20px;
-            }
-
-            .content-wrapper {
-                margin: 10px;
-            }
+        .actions button:hover {
+            background-color: #726858;
         }
 
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .actions button:focus {
+            outline: none;
         }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-light">
-        <div class="container">
-            <span class="navbar-brand mx-auto">Mộng Vân & Anh Kha</span>
+    <div class="container">
+        <div class="header">
+            <div class="date">04 / 04<br>Thứ 5</div>
         </div>
-    </nav>
-
-    <div class="slideshow">
-        <img src="assets/images/1.png" class="slides active" alt="Slide 1" onclick="toggleFlip()">
-        <img src="assets/images/2.png" class="slides" alt="Slide 2" onclick="toggleFlip()">
-    </div>
-
-    <div class="content-wrapper">
-        <h1>Thời Gian & Địa Điểm</h1>
-        <div class="details">
-            <p><strong>Ngày:</strong> Chủ Nhật, 29 Tháng 12, 2024</p>
-            <p><strong>Thời gian:</strong> 17:30 PM</p>
-            <p><strong>Địa điểm:</strong> The Adora Premium</p>
-            <p>803 Nguyễn Văn Linh, Tân Phú, Quận 7, Hồ Chí Minh, Việt Nam</p>
+        <div class="image-section">
+            <img src="assets/images/1.png" alt="Wedding Photo">
+        </div>
+        <div class="couple-names">
+            Kiến Văn <span class="icon">&#x1F48D;</span> Việt Hoài
+        </div>
+        <div class="actions">
+            <button>Gửi lời chúc</button>
+            <button>Xác nhận tham dự</button>
+            <button>Mừng cưới</button>
         </div>
     </div>
-
-    <script>
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slides');
-
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.style.opacity = "0";
-                slide.style.transform = "rotateY(180deg)";
-                if (i === index) {
-                    slide.style.opacity = "1";
-                    slide.style.transform = "rotateY(0deg)";
-                }
-            });
-        }
-
-        function nextSlide() {
-            const nextSlideIndex = (currentSlide + 1) % slides.length;
-            showSlide(nextSlideIndex);
-            currentSlide = nextSlideIndex;
-        }
-
-        function toggleFlip() {
-            nextSlide();
-        }
-
-        setInterval(nextSlide, 5000);
-    </script>
 </body>
 </html>
