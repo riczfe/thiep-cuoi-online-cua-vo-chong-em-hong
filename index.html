@@ -30,19 +30,6 @@
             transform: translateY(0);
         }
 
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.5s ease-in-out 0.2s;
-        }
-
-        .header.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
         .header-banner {
             width: 100%;
             background: linear-gradient(90deg, #dccbb6, #b8a190);
@@ -53,36 +40,6 @@
             font-family: 'Great Vibes', cursive;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
             position: relative;
-            overflow: hidden;
-        }
-
-        .header-banner::before,
-        .header-banner::after {
-            content: '';
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            border: 5px solid rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-            top: -50px;
-            left: 10%;
-            animation: swirl 10s infinite ease-in-out;
-        }
-
-        .header-banner::after {
-            left: auto;
-            right: 10%;
-            top: -70px;
-            animation-delay: 5s;
-        }
-
-        @keyframes swirl {
-            0%, 100% {
-                transform: scale(0.8) rotate(0deg);
-            }
-            50% {
-                transform: scale(1.2) rotate(360deg);
-            }
         }
 
         .header-banner span {
@@ -92,7 +49,6 @@
             border-radius: 15px;
             font-size: 28px;
             color: #fdfcf9;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
 
         .image-section {
@@ -160,18 +116,9 @@
             font-size: 20px;
         }
 
-        .actions button span {
-            font-family: 'Playfair Display', serif;
-            font-size: 24px;
-        }
-
         .actions button:hover {
             background-color: #b5a491;
             transform: scale(1.05);
-        }
-
-        .actions button:focus {
-            outline: none;
         }
 
         .section-three {
@@ -188,21 +135,6 @@
         .section-three.visible {
             opacity: 1;
             transform: translateY(0);
-        }
-
-        .section-three h2 {
-            font-family: 'Great Vibes', cursive;
-            text-align: center;
-            font-size: 36px;
-            margin-bottom: 10px;
-        }
-
-        .section-three p {
-            text-align: center;
-            font-family: 'Playfair Display', serif;
-            font-size: 18px;
-            color: #5f564d;
-            margin-bottom: 30px;
         }
 
         .album-grid {
@@ -226,22 +158,70 @@
             transform: translateY(0);
         }
 
-        .snowflake {
-            position: fixed;
-            top: -10px;
-            width: 8px;
-            height: 8px;
-            background-color: white;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-            border-radius: 50%;
-            animation: fall linear infinite;
-            z-index: 9999;
+        .calendar-section {
+            max-width: 768px;
+            margin: 50px auto;
+            padding: 40px;
+            background-color: #fdfcf9;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            border-radius: 15px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease-in-out 1.2s;
         }
 
-        @keyframes fall {
-            to {
-                transform: translateY(100vh);
-            }
+        .calendar-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .calendar-header .icon {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background-color: #d7bdbb;
+            border-radius: 50%;
+            line-height: 50px;
+            text-align: center;
+            color: #ffffff;
+            font-size: 20px;
+        }
+
+        .calendar {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+            font-size: 20px;
+            color: #5f564d;
+        }
+
+        .calendar th {
+            padding: 10px 0;
+            font-size: 18px;
+        }
+
+        .calendar td {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .calendar tbody td.active {
+            background-color: #dccbb6;
+            color: #ffffff;
+            border-radius: 50%;
+            font-weight: bold;
         }
     </style>
     <script>
@@ -254,7 +234,7 @@
                 });
             });
 
-            document.querySelectorAll(".container, .header-banner, .image-section, .couple-names, .actions, .section-three, .album-grid img").forEach((el) => {
+            document.querySelectorAll(".container, .header-banner, .image-section, .couple-names, .actions, .section-three, .calendar-section, .album-grid img").forEach((el) => {
                 observer.observe(el);
             });
 
@@ -268,7 +248,6 @@
                 snowflake.style.transform = `scale(${Math.random() * 0.5 + 0.5})`;
                 document.body.appendChild(snowflake);
 
-                // Remove snowflake after animation ends
                 setTimeout(() => {
                     snowflake.remove();
                 }, 5000);
@@ -310,6 +289,72 @@
                 <img src="assets/images/10.jpeg" alt="Wedding Photo 8">
                 <img src="assets/images/11.jpg" alt="Wedding Photo 9">
             </div>
+        </div>
+        <div class="calendar-section">
+            <div class="calendar-header">
+                <div class="icon">🎀</div>
+                <div>THÁNG 12 / 2024</div>
+            </div>
+            <table class="calendar">
+                <thead>
+                    <tr>
+                        <th>Thứ 2</th>
+                        <th>Thứ 3</th>
+                        <th>Thứ 4</th>
+                        <th>Thứ 5</th>
+                        <th>Thứ 6</th>
+                        <th>Thứ 7</th>
+                        <th>CN</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>12</td>
+                        <td>13</td>
+                        <td>14</td>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>17</td>
+                    </tr>
+                    <tr>
+                        <td>18</td>
+                        <td>19</td>
+                        <td>20</td>
+                        <td>21</td>
+                        <td>22</td>
+                        <td>23</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>25</td>
+                        <td>26</td>
+                        <td>27</td>
+                        <td>28</td>
+                        <td class="active">29</td>
+                        <td>30</td>
+                        <td>31</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </body>
