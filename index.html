@@ -31,24 +31,26 @@
         }
 
         .header-banner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             width: 100%;
-            background: linear-gradient(90deg, #dccbb6, #b8a190);
-            color: #ffffff;
-            text-align: center;
-            padding: 20px 0;
-            font-size: 24px;
-            font-family: 'Great Vibes', cursive;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            position: relative;
+            margin-bottom: 40px;
         }
 
         .header-banner span {
-            display: inline-block;
-            padding: 10px 20px;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 15px;
+            background: linear-gradient(135deg, #dccbb6, #b8a190);
+            border: 2px solid #fff;
+            padding: 15px 30px;
+            border-radius: 30px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2), inset 0 -2px 10px rgba(255, 255, 255, 0.2);
+            font-family: 'Great Vibes', cursive;
             font-size: 28px;
-            color: #fdfcf9;
+            color: #f2e6d9;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
 
         .image-section {
@@ -137,6 +139,21 @@
             transform: translateY(0);
         }
 
+        .section-three h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .section-three p {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            color: #5f564d;
+            text-align: center;
+            line-height: 1.6;
+        }
+
         .album-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -218,10 +235,27 @@
         }
 
         .calendar tbody td.active {
+            position: relative;
+        }
+
+        .calendar tbody td.active::before {
+            content: '';
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            width: 60px;
+            height: 60px;
             background-color: #dccbb6;
-            color: #ffffff;
-            border-radius: 50%;
+            clip-path: path("M30 55C47 35 60 28 60 15C60 7.5 53 1 45 1C38 1 33 6 30 12C27 6 22 1 15 1C7 1 0 7.5 0 15C0 28 13 35 30 55Z");
+            transform: translate(-50%, -50%);
+            z-index: 0;
+        }
+
+        .calendar tbody td.active span {
+            position: relative;
+            color: #dc0e0e;
             font-weight: bold;
+            z-index: 1;
         }
 
         .snowflake {
@@ -367,7 +401,7 @@
                         <td>26</td>
                         <td>27</td>
                         <td>28</td>
-                        <td class="active">29</td>
+                        <td class="active"><span>29</span></td>
                         <td>30</td>
                         <td>31</td>
                     </tr>
