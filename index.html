@@ -31,19 +31,56 @@
         }
 
         .header-banner {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 15px;
-            background: #dccbb6;
-            border-radius: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            background: linear-gradient(135deg, #dccbb6, #b8a190);
+            border: 2px solid #fff;
+            padding: 15px 30px;
+            border-radius: 30px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2), inset 0 -2px 10px rgba(255, 255, 255, 0.2);
             font-family: 'Great Vibes', cursive;
             font-size: 28px;
             color: #ffffff;
-            max-width: 300px;
-            margin: 20px auto;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .header-banner::before,
+        .header-banner::after {
+            content: '';
+            position: absolute;
+            border: 3px solid rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            z-index: -1;
+            animation: pulse 6s infinite ease-in-out;
+        }
+
+        .header-banner::before {
+            width: 100px;
+            height: 100px;
+            top: -20px;
+            left: -20px;
+            animation-delay: 0s;
+        }
+
+        .header-banner::after {
+            width: 120px;
+            height: 120px;
+            bottom: -30px;
+            right: -30px;
+            animation-delay: 2s;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.5;
+            }
         }
 
         .image-section {
@@ -266,6 +303,7 @@
                 observer.observe(el);
             });
 
+            // Snowfall Effect
             const createSnowflake = () => {
                 const snowflake = document.createElement("div");
                 snowflake.classList.add("snowflake");
@@ -287,7 +325,7 @@
 <body>
     <div class="container">
         <div class="header-banner">
-            29/12 - Chúa Nhật
+            <span>29/12 - Chúa Nhật</span>
         </div>
         <div class="image-section">
             <img src="assets/images/cover.JPG" alt="Wedding Photo">
