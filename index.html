@@ -258,21 +258,101 @@
             z-index: 1;
         }
 
-        .snowflake {
-            position: fixed;
-            top: -10px;
-            width: 8px;
-            height: 8px;
-            background-color: white;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-            border-radius: 50%;
-            animation: fall linear infinite;
-            z-index: 9999;
+        .location-section {
+            text-align: center;
+            margin-top: 40px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease-in-out 1.4s;
         }
 
-        @keyframes fall {
-            to {
-                transform: translateY(100vh);
+        .location-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .location-section h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .location-section p {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .location-section img {
+            max-width: 80%;
+            height: auto;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .location-section a {
+            display: inline-block;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #5f564d;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .header-banner span {
+                font-size: 20px;
+                padding: 10px 20px;
+            }
+
+            .couple-names {
+                font-size: 28px;
+            }
+
+            .actions button {
+                font-size: 16px;
+                padding: 10px 20px;
+            }
+
+            .section-three h2 {
+                font-size: 28px;
+            }
+
+            .section-three p {
+                font-size: 16px;
+            }
+
+            .album-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            }
+
+            .calendar {
+                font-size: 16px;
+            }
+
+            .calendar th {
+                font-size: 14px;
+            }
+
+            .calendar td {
+                padding: 10px;
+            }
+
+            .location-section h2 {
+                font-size: 28px;
+            }
+
+            .location-section p {
+                font-size: 16px;
+            }
+
+            .location-section a {
+                font-size: 16px;
             }
         }
     </style>
@@ -282,15 +362,15 @@
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add("visible");
+                        observer.unobserve(entry.target);
                     }
                 });
             });
 
-            document.querySelectorAll(".container, .header-banner, .image-section, .couple-names, .actions, .section-three, .calendar-section, .album-grid img").forEach((el) => {
+            document.querySelectorAll(".container, .header-banner, .image-section, .couple-names, .actions, .section-three, .calendar-section, .location-section, .album-grid img").forEach((el) => {
                 observer.observe(el);
             });
 
-            // Snowfall Effect
             const createSnowflake = () => {
                 const snowflake = document.createElement("div");
                 snowflake.classList.add("snowflake");
@@ -407,6 +487,16 @@
                     </tr>
                 </tbody>
             </table>
+        </div>
+        <div class="location-section">
+            <h2>Location / Địa điểm</h2>
+            <p>
+                Trung tâm hội nghị tiệc cưới <strong>The Adora Premium</strong><br>
+                803 Đ. Nguyễn Văn Linh, Tân Phú, Quận 7, Hồ Chí Minh 72908<br>
+                Tiệc sẽ đón khách vào lúc <strong>17:30 ngày 29/12</strong>.
+            </p>
+            <img src="assets/images/location.png" alt="Location Map">
+            <a href="https://maps.app.goo.gl/6aPmzHt5YJy8m2Dn9" target="_blank">View on Google Maps</a>
         </div>
     </div>
 </body>
