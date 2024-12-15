@@ -57,18 +57,18 @@
             transform: rotateY(180deg);
         }
 
-        .content {
-            text-align: center;
+        .content-wrapper {
+            margin: 20px auto;
             padding: 20px;
+            max-width: 600px;
+            text-align: center;
             background: white;
             border-radius: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin: 20px auto;
-            max-width: 600px;
             animation: slideInUp 1.5s;
         }
 
-        .content h1 {
+        .content-wrapper h1 {
             font-family: 'Great Vibes', cursive;
             font-size: 2.5em;
             color: #5a5a5a;
@@ -84,20 +84,12 @@
             margin: 5px 0;
         }
 
-        .content-wrapper {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-            margin: 20px 0;
-        }
-
         @media only screen and (max-width: 768px) {
             .slideshow {
                 margin: 20px;
             }
 
-            .content {
+            .content-wrapper {
                 margin: 10px;
             }
         }
@@ -123,7 +115,6 @@
                 transform: translateY(0);
             }
         }
-
     </style>
 </head>
 <body>
@@ -139,14 +130,12 @@
     </div>
 
     <div class="content-wrapper">
-        <div class="content">
-            <h1>Thời Gian & Địa Điểm</h1>
-            <div class="details">
-                <p><strong>Ngày:</strong> Chủ Nhật, 29 Tháng 12, 2024</p>
-                <p><strong>Thời gian:</strong> 17:30 PM</p>
-                <p><strong>Địa điểm:</strong> The Adora Premium</p>
-                <p>803 Nguyễn Văn Linh, Tân Phú, Quận 7, Hồ Chí Minh, Việt Nam</p>
-            </div>
+        <h1>Thời Gian & Địa Điểm</h1>
+        <div class="details">
+            <p><strong>Ngày:</strong> Chủ Nhật, 29 Tháng 12, 2024</p>
+            <p><strong>Thời gian:</strong> 17:30 PM</p>
+            <p><strong>Địa điểm:</strong> The Adora Premium</p>
+            <p>803 Nguyễn Văn Linh, Tân Phú, Quận 7, Hồ Chí Minh, Việt Nam</p>
         </div>
     </div>
 
