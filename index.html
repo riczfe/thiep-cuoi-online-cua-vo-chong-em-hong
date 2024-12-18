@@ -714,30 +714,31 @@
             </div>
             <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js"></script>
             <script>
-              // Initialize EmailJS with the Public Key
               (function () {
-                emailjs.init("pQE21BCRHdizRjEsz"); // Replace this with your actual Public Key
+                emailjs.init("pQE21BCRHdizRjEsz");
               })();
             
               document.addEventListener("DOMContentLoaded", () => {
-                const guestName = "vợ chồng em Hồng"; // Replace this dynamically if needed
+                const guestName = "vợ chồng em Hồng";
             
                 document.getElementById("rsvp-button").addEventListener("click", () => {
                   emailjs
                     .send("service_lc5n11b", "template_yo8pzvwb", {
-                      guest_name: guestName, // The dynamic guest name
+                      guest_name: guestName,
                     })
                     .then(
                       function (response) {
+                        console.log("Email Sent Successfully:", response);
                         alert("RSVP confirmation sent! Thank you for your participation.");
                       },
                       function (error) {
+                        console.error("EmailJS Error Details:", error);
                         alert("Failed to send RSVP. Please try again.");
-                        console.error("EmailJS Error:", error);
                       }
                     );
                 });
               });
-            </script>             
+            </script>
+                      
 </body>
 </html>
