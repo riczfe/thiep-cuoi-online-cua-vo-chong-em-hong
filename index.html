@@ -68,7 +68,7 @@
             color: #b85c38; /* Highlight the guest's name in a unique color */
             font-weight: bold; /* Make it stand out */
         }
-        
+
         /* Add glowing effect */
         .header-banner span::after {
             content: '';
@@ -457,6 +457,55 @@
                 box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
             }
         }
+        /* RSVP Button Container */
+        .rsvp-button-container {
+            position: fixed; /* Fixed at the bottom for both mobile and desktop */
+            bottom: 0;
+            width: 100%; /* Full width for mobile */
+            background-color: #e6e0d8; /* Match site theme */
+            text-align: center;
+            padding: 10px 0; /* Padding for better click area */
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 9999; /* Ensure it stays on top */
+        }
+
+        /* RSVP Button Styling */
+        #rsvp-button {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            color: #ffffff;
+            background-color: #b85c38; /* Elegant brown color */
+            border: none;
+            border-radius: 20px;
+            padding: 15px 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 90%; /* Default button width for mobile */
+            max-width: 300px; /* Limit button width on desktop */
+        }
+
+        #rsvp-button:hover {
+            background-color: #9e4b2f;
+            transform: scale(1.05); /* Slight zoom effect */
+        }
+
+        /* Desktop View: Position the button to the bottom-right inside the beige area */
+        @media screen and (min-width: 768px) {
+            .rsvp-button-container {
+                width: auto; /* Shrink to fit the content */
+                position: relative; /* Positioned relative to the container */
+                right: 20px; /* Offset from the right */
+                bottom: 20px; /* Offset from the bottom */
+                background: none; /* Remove background for desktop */
+                box-shadow: none; /* Remove shadow for desktop */
+                padding: 0;
+            }
+
+            #rsvp-button {
+                width: auto; /* Remove full width for desktop */
+            }
+        }
     </style>
 
     <!-- SNOW EFFECT -->
@@ -544,7 +593,7 @@
             <span>29/12 - Chủ Nhật</span>
         </div>
         <div class="personalized-greeting">
-            <p>Trân trọng kính mời <span class="guest-name">(tên của quý khách)</span></p>
+            <p>Trân trọng kính mời <span class="guest-name">vợ chồng em Hồng</span></p>
         </div>        
         <div class="image-section">
             <img src="assets/images/cover.JPG" alt="Wedding Photo">
@@ -654,5 +703,42 @@
             <a href="https://maps.app.goo.gl/6aPmzHt5YJy8m2Dn9" target="_blank">View on Google Maps</a>
         </div>
     </div>
+            <!-- RSVP Button -->
+            <!-- <div class="rsvp-button-container">
+                <button id="rsvp-button">Tôi sẽ tham gia</button>
+            </div> -->
+
+            <!-- RSVP Button -->
+            <div class="rsvp-button-container">
+                <button id="rsvp-button">Tôi sẽ tham gia</button>
+            </div>
+            <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js"></script>
+            <script>
+              (function () {
+                emailjs.init("pQE21BCRHdizRjEsz");
+              })();
+            
+              document.addEventListener("DOMContentLoaded", () => {
+                const guestName = "vợ chồng em Hồng";
+            
+                document.getElementById("rsvp-button").addEventListener("click", () => {
+                  emailjs
+                    .send("service_lc5n11b", "template_yo8pzvwb", {
+                      guest_name: guestName,
+                    })
+                    .then(
+                      function (response) {
+                        console.log("Email Sent Successfully:", response);
+                        alert("RSVP confirmation sent! Thank you for your participation.");
+                      },
+                      function (error) {
+                        console.error("EmailJS Error Details:", error);
+                        alert("Failed to send RSVP. Please try again.");
+                      }
+                    );
+                });
+              });
+            </script>
+                      
 </body>
 </html>
