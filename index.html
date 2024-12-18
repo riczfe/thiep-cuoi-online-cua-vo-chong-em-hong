@@ -348,6 +348,16 @@
             font-size: 18px;
         }
 
+        .location-section a img {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: block; /* Ensure it takes full width */
+            margin: 0 auto; /* Center the image */
+        }
+
+        .location-section a img:hover {
+            transform: scale(1.05); /* Slight zoom effect */
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+        }
         @media screen and (max-width: 768px) {
             .container {
                 padding: 20px;
@@ -532,7 +542,7 @@
         </div>
         <div class="section-three">
             <h2>Album Hình Cưới</h2>
-            <p>Sự gì Thiên Chúa đã kết hợp, loài người không được <bold>PHÂN LY</bold>.</p>
+            <p>Sự gì Thiên Chúa đã kết hợp, loài người không được <bold>PHÂN LY</bold>. (Mt 19, 3-12)</p>
             <div class="album-grid">
                 <img src="assets/images/3.jpeg" alt="Wedding Photo 1">
                 <img src="assets/images/4.jpeg" alt="Wedding Photo 2">
@@ -618,8 +628,10 @@
                 803 Đ. Nguyễn Văn Linh, Tân Phú, Quận 7, Hồ Chí Minh 72908<br>
                 Tiệc sẽ đón khách vào lúc <strong>17:30 ngày 29/12</strong>.
             </p>
-            <img src="assets/images/location.png" alt="Location Map">
-            <br>
+            <!-- Wrap the image in an <a> tag -->
+            <a href="https://maps.app.goo.gl/6aPmzHt5YJy8m2Dn9" target="_blank">
+                <img src="assets/images/location.png" alt="Location Map">
+            </a>
             <a href="https://maps.app.goo.gl/6aPmzHt5YJy8m2Dn9" target="_blank">View on Google Maps</a>
         </div>
     </div>
