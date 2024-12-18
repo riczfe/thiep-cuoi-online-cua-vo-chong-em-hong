@@ -9,8 +9,8 @@
         body {
             margin: 0;
             font-family: 'Playfair Display', serif;
-            background-color: #e6e0d8;
-            color: #5f564d;
+            background: linear-gradient(to bottom, #b4a987, #e6e0d8); /* Light and soft gradient */
+            color: #5f564d; /* Maintain text readability */
         }
 
         .container {
@@ -375,11 +375,12 @@
         .snowflake {
             position: fixed;
             top: -10px;
-            color: #ffffff;
+            color: #ffffff; /* Pure white for contrast */
             font-size: 10px;
             z-index: 9999;
             pointer-events: none;
             animation: fall linear infinite;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8), 0 0 10px rgba(255, 255, 255, 0.5); /* Add glow */
         }
         
         @keyframes fall {
@@ -416,6 +417,8 @@
                 snowflake.style.animationDuration = Math.random() * 3 + 2 + "s";
                 snowflake.style.fontSize = Math.random() * 10 + 10 + "px";
                 snowflake.style.opacity = Math.random();
+                const colors = ["#ffffff", "#dceefb", "#fde2e4", "#ffe5b4"];
+                snowflake.style.color = colors[Math.floor(Math.random() * colors.length)];
         
                 document.body.appendChild(snowflake);
         
@@ -442,22 +445,6 @@
             document.querySelectorAll(".container, .header-banner, .image-section, .couple-names, .actions, .section-three, .calendar-section, .location-section, .album-grid img").forEach((el) => {
                 observer.observe(el);
             });
-
-            const createSnowflake = () => {
-                const snowflake = document.createElement("div");
-                snowflake.classList.add("snowflake");
-                snowflake.style.left = Math.random() * 100 + "vw";
-                snowflake.style.animationDuration = Math.random() * 3 + 2 + "s";
-                snowflake.style.opacity = Math.random();
-                snowflake.style.transform = `scale(${Math.random() * 0.5 + 0.5})`;
-                document.body.appendChild(snowflake);
-
-                setTimeout(() => {
-                    snowflake.remove();
-                }, 5000);
-            };
-
-            setInterval(createSnowflake, 100);
         });
     </script>
 </head>
