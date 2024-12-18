@@ -368,6 +368,66 @@
             }
         }
     </style>
+
+    <!-- SNOW EFFECT -->
+    <style>
+        /* Add this to your existing CSS */
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            color: #ffffff;
+            font-size: 10px;
+            z-index: 9999;
+            pointer-events: none;
+            animation: fall linear infinite;
+        }
+        
+        @keyframes fall {
+            0% {
+                transform: translateY(-10px) rotate(0deg);
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+        </style>
+        
+        <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+        
+            document.querySelectorAll(".container, .header-banner, .image-section, .couple-names, .actions, .section-three, .calendar-section, .location-section, .album-grid img").forEach((el) => {
+                observer.observe(el);
+            });
+        
+            // Updated snowfall logic
+            const createSnowflake = () => {
+                const snowflake = document.createElement("div");
+                snowflake.classList.add("snowflake");
+                snowflake.textContent = "❄";
+                snowflake.style.left = Math.random() * 100 + "vw";
+                snowflake.style.animationDuration = Math.random() * 3 + 2 + "s";
+                snowflake.style.fontSize = Math.random() * 10 + 10 + "px";
+                snowflake.style.opacity = Math.random();
+        
+                document.body.appendChild(snowflake);
+        
+                setTimeout(() => {
+                    snowflake.remove();
+                }, 5000); // Remove snowflake after it exits screen
+            };
+        
+            setInterval(createSnowflake, 100); // Create snowflakes at regular intervals
+        });
+        </script>
+        
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const observer = new IntersectionObserver((entries) => {
