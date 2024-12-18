@@ -53,6 +53,22 @@
             z-index: 1;
         }
 
+        /* THE RECIPIENT DESIGN */
+        .personalized-greeting {
+            text-align: center;
+            margin: 20px 0;
+            font-family: 'Playfair Display', serif;
+            font-size: 24px; /* Slightly smaller than the header banner */
+            color: #5f564d; /* Neutral text color to match the theme */
+        }
+
+        .personalized-greeting .guest-name {
+            font-family: 'Great Vibes', cursive; /* Different font for elegance */
+            font-size: 28px; /* Slightly larger for emphasis */
+            color: #b85c38; /* Highlight the guest's name in a unique color */
+            font-weight: bold; /* Make it stand out */
+        }
+        
         /* Add glowing effect */
         .header-banner span::after {
             content: '';
@@ -527,6 +543,9 @@
         <div class="header-banner">
             <span>29/12 - Chủ Nhật</span>
         </div>
+        <div class="personalized-greeting">
+            <p>Trân trọng kính mời <span class="guest-name">(tên của quý khách)</span></p>
+        </div>        
         <div class="image-section">
             <img src="assets/images/cover.JPG" alt="Wedding Photo">
         </div>
