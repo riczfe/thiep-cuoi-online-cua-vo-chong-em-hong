@@ -375,6 +375,16 @@
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
         }
         @media screen and (max-width: 768px) {
+            /* Add decorative snowflakes */
+            .header-banner span::before {
+                content: ''; /* Decorative snowflake */
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                font-size: 18px;
+                color: rgba(255, 255, 255, 0.8);
+                animation: rotate 6s linear infinite;
+            }
             .container {
                 padding: 20px;
             }
@@ -432,7 +442,7 @@
                 content: '';
                 position: absolute;
                 top: 87%;
-                left: 78%;
+                left: 71%;
                 width: 60px;
                 height: 60px;
                 background-color: #dccbb6;
@@ -504,6 +514,83 @@
 
             #rsvp-button {
                 width: auto; /* Remove full width for desktop */
+            }
+        }
+        /* POP UP MENU */
+        .popup {
+            display: none;
+            position: sticky; /* Ensures it's relative to the button position */
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            width: 300px; /* Adjust size to match the empty square */
+            height: 150px; /* Adjust height for symmetrical layout */
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(20px) scale(0.95);
+            transition: all 0.3s ease-in-out;
+            padding: 15px;
+        }
+
+        .popup.visible {
+            display: block;
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .popup-header {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .popup-content {
+            text-align: center;
+        }
+
+        .popup textarea {
+            width: 90%; /* Fits inside the popup */
+            height: 50px; /* Adjust height for a compact design */
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            resize: none;
+        }
+
+        .popup img.qr-code {
+            width: 120px; /* Smaller QR code */
+            height: 120px;
+            margin: 0 auto; /* Center it inside */
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .overlay.visible {
+            display: block;
+            opacity: 1;
+        }
+
+        /* QR Code Style */
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+        }
+        @media screen and (max-width: 768px) {
+            .popup {
+                position: sticky;
             }
         }
     </style>
@@ -603,10 +690,82 @@
         </div>
         <div class="section-two">
             <div class="actions">
-                <button><span>&#x1F4AC;</span> Gửi lời chúc</button>
-                <button><span>&#x1F4E8;</span> Xác nhận tham dự</button>
-                <button><span>&#x1F4B0;</span> Mừng cưới</button>
+                <div class="actions">
+                    <button id="btn-loi-chuc"><span>&#x1F4AC;</span> Gửi lời chúc</button>
+                    <button id="btn-tham-gia"><span>&#x1F4E8;</span> Xác nhận tham dự</button>
+                    <button id="btn-mung-cuoi"><span>&#x1F4B0;</span> Mừng cưới</button>
+                </div>                
             </div>
+            <!-- Popup for "Gửi lời chúc" -->
+            <div class="popup" id="popup-loi-chuc">
+                <div class="popup-header">Gửi lời chúc</div>
+                <div class="popup-content">
+                    <textarea rows="3" placeholder="Nhập lời chúc của bạn..."></textarea>
+                    <button id="send-loi-chuc">Gửi</button>
+                </div>
+            </div>
+
+            <!-- Popup for "Mừng cưới" -->
+            <div class="popup" id="popup-mung-cuoi">
+                <div class="popup-header">Mừng cưới</div>
+                <div class="popup-content">
+                    <img class="qr-code" src="assets/images/qr-code.png" alt="QR Code">
+                    <p>Quét mã QR để mừng cưới!</p>
+                    <button id="close-mung-cuoi">Đóng</button>
+                </div>
+            </div>
+
+            <!-- Overlay -->
+            <div class="overlay" id="overlay"></div>
+            <script>
+                const btnLoiChuc = document.querySelector(".actions button:nth-child(1)");
+                const btnMungCuoi = document.querySelector(".actions button:nth-child(3)");
+                const popupLoiChuc = document.getElementById("popup-loi-chuc");
+                const popupMungCuoi = document.getElementById("popup-mung-cuoi");
+                const overlay = document.getElementById("overlay");
+                const sendLoiChuc = document.getElementById("send-loi-chuc");
+                const closeMungCuoi = document.getElementById("close-mung-cuoi");
+              
+                // Show popup
+                function showPopup(button, popup) {
+                  const buttonRect = button.getBoundingClientRect();
+                  popup.style.top = `${buttonRect.top - popup.offsetHeight - 10}px`; // Position above the button
+                  popup.style.left = `${buttonRect.left}px`; // Align with button's left
+                  popup.classList.add("visible");
+                  overlay.classList.add("visible");
+                }
+              
+                // Hide popup
+                function hidePopup(popup) {
+                  popup.classList.remove("visible");
+                  overlay.classList.remove("visible");
+                }
+              
+                // Gửi lời chúc popup
+                btnLoiChuc.addEventListener("click", () => {
+                  showPopup(btnLoiChuc, popupLoiChuc);
+                });
+              
+                sendLoiChuc.addEventListener("click", () => {
+                  alert("Lời chúc của bạn đã được gửi. Cảm ơn!");
+                  hidePopup(popupLoiChuc);
+                });
+              
+                // Mừng cưới popup
+                btnMungCuoi.addEventListener("click", () => {
+                  showPopup(btnMungCuoi, popupMungCuoi);
+                });
+              
+                closeMungCuoi.addEventListener("click", () => {
+                  hidePopup(popupMungCuoi);
+                });
+              
+                // Overlay click to close all popups
+                overlay.addEventListener("click", () => {
+                  hidePopup(popupLoiChuc);
+                  hidePopup(popupMungCuoi);
+                });
+              </script>                                           
         </div>
         <div class="section-three">
             <h2>Album Hình Cưới</h2>
@@ -646,48 +805,57 @@
                         <td></td>
                         <td></td>
                         <td></td>
+                        <td></td>
+                        <td></td>
                         <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
                     </tr>
                     <tr>
+                        <td>2</td>
+                        <td>3</td>
                         <td>4</td>
                         <td>5</td>
                         <td>6</td>
                         <td>7</td>
                         <td>8</td>
-                        <td>9</td>
-                        <td>10</td>
                     </tr>
                     <tr>
+                        <td>9</td>
+                        <td>10</td>
                         <td>11</td>
                         <td>12</td>
                         <td>13</td>
                         <td>14</td>
                         <td>15</td>
-                        <td>16</td>
-                        <td>17</td>
                     </tr>
                     <tr>
+                        <td>16</td>
+                        <td>17</td>
                         <td>18</td>
                         <td>19</td>
                         <td>20</td>
                         <td>21</td>
                         <td>22</td>
-                        <td>23</td>
-                        <td>24</td>
                     </tr>
                     <tr>
+                        <td>23</td>
+                        <td>24</td>
                         <td>25</td>
                         <td>26</td>
                         <td>27</td>
                         <td>28</td>
                         <td class="active"><span>29</span></td>
+                    </tr>
+                    <tr>
                         <td>30</td>
                         <td>31</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                 </tbody>
-            </table>
+            </table>            
         </div>
         <div class="location-section">
             <h2>Location / Địa điểm</h2>
