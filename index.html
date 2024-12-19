@@ -375,6 +375,16 @@
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
         }
         @media screen and (max-width: 768px) {
+            /* Add decorative snowflakes */
+            .header-banner span::before {
+                content: ''; /* Decorative snowflake */
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                font-size: 18px;
+                color: rgba(255, 255, 255, 0.8);
+                animation: rotate 6s linear infinite;
+            }
             .container {
                 padding: 20px;
             }
