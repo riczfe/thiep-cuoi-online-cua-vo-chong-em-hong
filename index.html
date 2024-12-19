@@ -593,6 +593,64 @@
                 position: sticky;
             }
         }
+        .quote-section {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #e6e0d8; /* Soft background color to highlight the quote */
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
+            margin: 40px auto;
+            max-width: 800px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quote-section::before, .quote-section::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(to right, #dccbb6, #b8a190, #dccbb6); /* Elegant gradient bar */
+            top: 0;
+            left: 0;
+        }
+
+        .quote-section::after {
+            top: auto;
+            bottom: 0;
+        }
+
+        .quote-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px; /* Larger, more visible font */
+            font-weight: bold; /* Make it stand out */
+            color: #5f564d; /* Neutral, visible color */
+            line-height: 1.8;
+            margin: 0;
+            letter-spacing: 1px; /* Slight spacing for elegance */
+            opacity: 0;
+            animation: fadeIn 2s ease forwards, zoomIn 2s ease forwards;
+        }
+
+        /* Fade-in effect */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Zoom-in effect */
+        @keyframes zoomIn {
+            0% {
+                transform: scale(0.9);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
     </style>
 
     <!-- SNOW EFFECT -->
@@ -749,6 +807,11 @@
                     <button id="close-mung-cuoi">Đóng</button>
                 </div>
             </div>
+
+            <!-- Add this in your body where you want the quote section -->
+            <div class="quote-section">
+                <p class="quote-text">Chúng Mình Thật Sự Rất Mong Bạn Đến Chung Vui Với Chúng Mình</p>
+            </div>            
 
             <!-- Overlay -->
             <div class="overlay" id="overlay"></div>
