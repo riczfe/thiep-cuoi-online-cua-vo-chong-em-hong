@@ -702,9 +702,34 @@
             <div class="actions">
                 <div class="actions">
                     <button id="btn-loi-chuc"><span>&#x1F4AC;</span> Gửi lời chúc</button>
-                    <button id=""><span>&#x1F4E8;</span> Xác nhận tham dự</button>
+                    <button id="confirmation"><span>&#x1F4E8;</span> Xác nhận tham dự</button>
                     <button id="btn-mung-cuoi"><span>&#x1F4B0;</span> Mừng cưới</button>
                 </div>                
+                <!-- RSVP BUTTON -->
+                <script>
+                    document.getElementById("confirmation").addEventListener("click", (event) => {
+                        event.preventDefault(); // Prevent default button behavior
+    
+                        const guestName = "vợ chồng em Hồng"; // Replace with dynamic data if necessary
+                        console.log("Sending RSVP for guest:", guestName);
+    
+                        // Use EmailJS to send the email
+                        emailjs
+                            .send("service_lc5n11b", "template_yo8pzwb", {
+                                guest_name: guestName, // Match template variable
+                            })
+                            .then(
+                                function (response) {
+                                    console.log("Email Sent Successfully:", response);
+                                    alert("RSVP confirmation sent! Thank you for your participation.");
+                                },
+                                function (error) {
+                                    console.error("EmailJS Error Details:", error);
+                                    alert("Failed to send RSVP. Please try again.");
+                                }
+                            );
+                    });
+                </script>
             </div>
             <!-- Popup for "Gửi lời chúc" -->
             <div class="popup" id="popup-loi-chuc">
