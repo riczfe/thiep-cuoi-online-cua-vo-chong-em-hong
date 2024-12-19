@@ -673,6 +673,16 @@
             });
         });
     </script>
+    
+    <!-- EMAILJS DECLARAION -->
+    <!-- Include EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        // Initialize EmailJS with your public key
+        (function () {
+            emailjs.init("pQE21BCRHdizRjEsz"); // Replace with your actual public key
+        })();
+    </script>
 </head>
 <body>
     <div class="container">
@@ -692,7 +702,7 @@
             <div class="actions">
                 <div class="actions">
                     <button id="btn-loi-chuc"><span>&#x1F4AC;</span> Gửi lời chúc</button>
-                    <button id="btn-tham-gia"><span>&#x1F4E8;</span> Xác nhận tham dự</button>
+                    <button id=""><span>&#x1F4E8;</span> Xác nhận tham dự</button>
                     <button id="btn-mung-cuoi"><span>&#x1F4B0;</span> Mừng cưới</button>
                 </div>                
             </div>
@@ -878,35 +888,33 @@
 
             <!-- RSVP Button -->
             <div class="rsvp-button-container">
-                <button id="rsvp-button">Tôi sẽ tham gia</button>
-            </div>
-            <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js"></script>
+                <button id="rsvp-button" type="button">Tôi sẽ tham gia</button>
+            </div>     
+            <!-- RSVP SCRIPTS -->            
+            <!-- RSVP Button Script -->
             <script>
-              (function () {
-                emailjs.init("pQE21BCRHdizRjEsz");
-              })();
-            
-              document.addEventListener("DOMContentLoaded", () => {
-                const guestName = "vợ chồng em Hồng";
-            
-                document.getElementById("rsvp-button").addEventListener("click", () => {
-                  emailjs
-                    .send("service_lc5n11b", "template_yo8pzvwb", {
-                      guest_name: guestName,
-                    })
-                    .then(
-                      function (response) {
-                        console.log("Email Sent Successfully:", response);
-                        alert("RSVP confirmation sent! Thank you for your participation.");
-                      },
-                      function (error) {
-                        console.error("EmailJS Error Details:", error);
-                        alert("Failed to send RSVP. Please try again.");
-                      }
-                    );
+                document.getElementById("rsvp-button").addEventListener("click", (event) => {
+                    event.preventDefault(); // Prevent default button behavior
+
+                    const guestName = "vợ chồng em Hồng"; // Replace with dynamic data if necessary
+                    console.log("Sending RSVP for guest:", guestName);
+
+                    // Use EmailJS to send the email
+                    emailjs
+                        .send("service_lc5n11b", "template_yo8pzwb", {
+                            guest_name: guestName, // Match template variable
+                        })
+                        .then(
+                            function (response) {
+                                console.log("Email Sent Successfully:", response);
+                                alert("RSVP confirmation sent! Thank you for your participation.");
+                            },
+                            function (error) {
+                                console.error("EmailJS Error Details:", error);
+                                alert("Failed to send RSVP. Please try again.");
+                            }
+                        );
                 });
-              });
             </script>
-                      
 </body>
 </html>
